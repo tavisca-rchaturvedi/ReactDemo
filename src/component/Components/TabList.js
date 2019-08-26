@@ -27,7 +27,8 @@ class TabListComponent extends Component{
             width: "max-content",
             border:"2px solid black",
             height: "-webkit-fill-available",
-            padding: "inherit"
+            padding: "inherit",
+            margin: "20px"
         }
         return <ul style={style}>{this.fetchList()}</ul>;
     }

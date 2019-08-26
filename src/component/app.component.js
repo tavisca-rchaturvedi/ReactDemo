@@ -13,6 +13,12 @@ class MyComponent extends Component {
       }, {
         "FirstName" : "Vishal",
         "LastName" : "Sharma"
+      },{
+        "FirstName" : "Hello",
+        "LastName" : "World"
+      },{
+        "FirstName" : "ABCD",
+        "LastName" : "CDEF"
       }],
       index: null
     }
@@ -44,8 +50,9 @@ class MyComponent extends Component {
   }
 
   render() {
+    let style = {display: "flex", border: "2px solid red"};
     return (
-    <div>
+    <div style={style}>
       <TabListComponent data={this.state.data} clicked={this.buttonClicked.bind(this)}></TabListComponent>
       <TabContentComponent updateState={this.updateState.bind(this)} data={this.state.data} selectedIndex={this.state.selectedIndex}></TabContentComponent>
     </div>

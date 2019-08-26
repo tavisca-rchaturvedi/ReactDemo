@@ -33,7 +33,8 @@ class TabContentComponent extends Component{
     render(){
         if(this.props.selectedIndex != null){
             let style = {
-                display: "block"
+                display: "block",
+                margin: "100px"
             }
             return <div style={style}>{this.showInputs(this.props.selectedIndex)}</div>
         }
