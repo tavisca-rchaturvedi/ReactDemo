@@ -14,13 +14,15 @@ class TabContentComponent extends Component{
                 display: "block"
             } 
             if(index == this.props.selectedIndex){
+                let firstName = name.FirstName;
+                let lastName = name.LastName;
                 return (<div style={style}>
-                    <input id="firstName" value={name.FirstName}></input>
-                    <input id="lastName" value={name.LastName}></input>
+                    <input type="text" id="firstName" defaultValue={firstName}></input>
+                    <input type="text" id="lastName" defaultValue={lastName}></input>
                     <button onClick={() => 
                         this.props.updateState(
-                            document.getElementById().value,
-                            document.getElementById().value,
+                            document.getElementById("firstName").value,
+                            document.getElementById("lastName").value,
                             this.props.selectedIndex
                             )}>Update</button>
                 </div>)

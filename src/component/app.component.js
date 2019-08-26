@@ -26,8 +26,14 @@ class MyComponent extends Component {
   }
 
   updateState(firstName, lastName, index){
-    this.state.data[index].FirstName = firstName;
-    this.state.data[index].LastName = lastName;
+    console.log(firstName, lastName, index);
+    let updatedData = this.state.data;
+    updatedData[index] = {"FirstName" : firstName, "LastName": lastName};
+    this.setState({
+      data: updatedData
+    })
+//    this.state.data[index].FirstName = firstName;
+  //  this.state.data[index].LastName = lastName;
   }
 
   buttonClicked(index){
