@@ -1,30 +1,50 @@
 import React, { Component } from "react";
+import TabListComponent from './Components/TabList.js';
+import TabContentComponent from './Components/TabContent.js';
 import s from "./app.component.css";
 class MyComponent extends Component {
 
-  data = [{
-    "FirstName" : "Rishabh",
-    "LastName" : "Chaturvedi"
-  }, {
-    "FirstName" : "Vishal",
-    "LastName" : "Sharma"
-  }]
-
-
-  componentDidMount(){
-    
+  constructor(props){
+    super(props);
+    this.state = {
+      data : [{
+        "FirstName" : "Rishabh",
+        "LastName" : "Chaturvedi"
+      }, {
+        "FirstName" : "Vishal",
+        "LastName" : "Sharma"
+      }],
+      index: null
+    }
   }
 
-  buttonClicked(){
-    console.log("Button Clicked!");
+
+  fetchData(){
+    return this.state.data.map((name, index) => {
+      return <button id={index} onClick={() => this.buttonClicked(name.FirstName+name.LastName)}>{name.FirstName + " " + name.LastName}</button>
+    });
   }
 
-  makeButton(){
-    return <button onClick={this.buttonClicked} >ABC Button</button>
+  updateState(firstName, lastName, index){
+    this.state.data[index].FirstName = firstName;
+    this.state.data[index].LastName = lastName;
+  }
+
+  buttonClicked(index){
+    console.log(index);
+    this.setState({
+      selectedIndex: index
+    })
   }
 
   render() {
-    return this.makeButton();
+    return (
+    <div>
+      <TabListComponent data={this.state.data} clicked={this.buttonClicked.bind(this)}></TabListComponent>
+      <TabContentComponent updateState={this.updateState.bind(this)} data={this.state.data} selectedIndex={this.state.selectedIndex}></TabContentComponent>
+    </div>
+    )
   }
+
 }
 export default MyComponent;
